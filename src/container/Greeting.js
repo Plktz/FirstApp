@@ -33,7 +33,7 @@ export const Greeting = () => {
             <Btn text = "Greet" onClick = {setName}/>
             <Btn text = "Clear All" onClick = {setClear}/>
             <br/>
-            <Output text = {name}/>
+            <Output text = {"Welcome " + name}/>
         </div>
     )
 }
