@@ -1,9 +1,8 @@
 
 const Btn = (props) => {
-
     
     return(
-        <button onClick ={props.onClick}>{props.text}</button>
+        <button className = "btn btn-primary" onClick ={props.onClick}>{props.text}</button>
     )
 }
 

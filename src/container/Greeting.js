@@ -3,37 +3,45 @@ import Btn from "../components/Btn";
 import Input from "../components/Input";
 import Output from "../components/Output";
 
-
 export const Greeting = () => {
-    let last = useRef("");
-    let first = useRef("");
-    const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
+    const [first, setFirst] = useState("");
+    const [last, setLast] = useState("");
+    const [name, setName] = useState("");
 
-    let name = `${firstName} ${lastName}`
-    function setName()
-    {
-        setFirstName(first.current);
-        setLastName(last.current);
+    let fullName = `${first} ${last}`
+
+    function fixCase(str) {
+        if(str.length === 0)
+        {   
+            return str;
+        }
+        else{
+            return str[0].toUpperCase() + str.substring(1).toLowerCase();
+        }
     }
 
-    function setClear()
-    {
-        setFirstName("");
-        setLastName("");
+    function updateName() {
+        fullName = fixCase(first) + " " + fixCase(last);
+
+        setName(fullName);
     }
 
+    function setClear() {
+        setFirst("");
+        setLast("");
+        setName("");
+    }
     return (
-        <div class = "container">
-            <Output text = "First Name "/>
-            <Input onChange = {event => {first.current = event.target.value;}}/>
-            <Output text = "Last Name" />
-            <Input onChange = {event => {last.current = event.target.value;}}/>
-            <br/>
-            <Btn text = "Greet" onClick = {setName}/>
-            <Btn text = "Clear All" onClick = {setClear}/>
-            <br/>
-            <Output text = {"Welcome " + name}/>
+        <div className="text-center">
+            <Output text="First Name " />
+            <Input text = {first} onChange={event => { setFirst(event.target.value); }} />
+            <Output text="Last Name" />
+            <Input text = {last} onChange={event => { setLast(event.target.value) }} />
+            <br />
+            <Btn text="Greet" onClick={updateName} />
+            <Btn text="Clear All" onClick={setClear} />
+            <br />
+            <Output text={"Welcome " + name} />
         </div>
     )
 }

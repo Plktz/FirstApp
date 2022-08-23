@@ -1,8 +1,9 @@
 
 const Input = (props) => {
+
     return(
         <>
-            <input id = {props.id} onChange = {props.onChange}></input>
+            <input value={props.text} onChange = {props.onChange}></input>
         </>
     )
 }
